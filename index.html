@@ -1,233 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MIL 2nd Quarter - Joe's Interactive Web</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #22123C;
-      color: white;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media and Information Literacy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    background-color: #121212;
+  }
 
-    section {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+  section {
+    display: none;
+    height: 100vh;
+    padding: 50px 20px;
+  }
 
-    .hidden {
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(1.05);
-    }
+  .active {
+    display: block;
+  }
 
-    .visible {
-      opacity: 1;
-      pointer-events: all;
-      transform: scale(1);
-    }
+  /* Parallax Backgrounds */
+  .intro {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=60') center/cover fixed;
+  }
 
-    h1, h2 { margin-bottom: 10px; }
+  .menu {
+    background: linear-gradient(to bottom right, #2e003e, #1f1c2c);
+  }
 
-    p {
-      color: #ddd;
-      max-width: 700px;
-      margin: 10px auto;
-      font-size: 1.1em;
-    }
+  .topic {
+    background: linear-gradient(to bottom right, #2e003e, #1f1c2c);
+  }
 
-    .btn {
-      background: #5C34B0;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      color: white;
-      font-size: 1em;
-      cursor: pointer;
-      transition: 0.3s;
-      margin: 8px;
-    }
+  h1, h2 {
+    margin-bottom: 20px;
+  }
 
-    .btn:hover {
-      background: #472782;
-      transform: scale(1.05);
-    }
+  button {
+    background-color: #7a00ff;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
-    .bg {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, #22123C, #472782, #5C34B0);
-      z-index: -1;
-      filter: blur(8px);
-    }
+  button:hover {
+    background-color: #9b4dff;
+  }
 
-    footer {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      color: #aaa;
-      font-size: 0.9em;
-    }
+  .back {
+    background-color: #444;
+  }
 
-    .topics-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      width: 90%;
-      max-width: 900px;
-    }
-
-    .topic-btn {
-      background: rgba(92, 52, 176, 0.8);
-      border: none;
-      padding: 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      color: white;
-      font-size: 1.1em;
-      transition: 0.3s;
-    }
-
-    .topic-btn:hover {
-      background: #472782;
-      transform: scale(1.05);
-    }
-  </style>
+  .back:hover {
+    background-color: #222;
+  }
+</style>
 </head>
 <body>
 
-  <!-- INTRO -->
-  <section id="intro" class="visible">
-    <div class="bg"></div>
-    <h1>Media and Information Literacy</h1>
-    <p>Welcome to Joe’s 2nd Quarter MIL Web. Learn through interactive topics below.</p>
-    <button class="btn" data-target="menu">Get Started</button>
-    <footer>© 2025 Joe | Cosmic Violet Theme</footer>
-  </section>
+<!-- Intro -->
+<section id="intro" class="intro active">
+  <h1>Media and Information Literacy</h1>
+  <p>Discover the world of media and information in this interactive site.</p>
+  <button id="getStarted">Get Started</button>
+</section>
 
-  <!-- MENU -->
-  <section id="menu" class="hidden">
-    <div class="bg"></div>
-    <h2>Select a Topic</h2>
-    <div class="topics-container">
-      <button class="topic-btn" data-target="topic1">Opportunities, Challenges, and Threats</button>
-      <button class="topic-btn" data-target="topic2">Media and Information Literate Individual</button>
-      <button class="topic-btn" data-target="topic3">Text and Information Media</button>
-      <button class="topic-btn" data-target="topic4">Design Principles and Elements</button>
-      <button class="topic-btn" data-target="topic5">Visual Information and Media</button>
-      <button class="topic-btn" data-target="topic6">Audio Information and Media</button>
-      <button class="topic-btn" data-target="topic7">Manipulative Information and Media</button>
-      <button class="topic-btn" data-target="topic8">Multimedia Information and Media</button>
-      <button class="topic-btn" data-target="topic9">Media and Information Literacy</button>
-    </div>
-    <button class="btn" data-target="intro">Back</button>
-  </section>
+<!-- Topic Menu -->
+<section id="menu" class="menu">
+  <h2>Select a Topic</h2>
+  <button class="topic-btn" data-topic="opportunities">Opportunities, Challenges, and Threats</button>
+  <button class="topic-btn" data-topic="literate">Media and Information Literate Individual</button>
+  <button class="topic-btn" data-topic="text">Text and Information Media</button>
+  <button class="topic-btn" data-topic="design">Design Principles and Elements</button>
+  <button class="topic-btn" data-topic="visual">Visual Information and Media</button>
+  <button class="topic-btn" data-topic="audio">Audio Information and Media</button>
+  <button class="topic-btn" data-topic="manipulative">Manipulative Information and Media</button>
+  <button class="topic-btn" data-topic="multimedia">Multimedia Information and Media</button>
+  <button class="topic-btn" data-topic="literacy">Media and Information Literacy</button>
+  <button class="back" id="backToIntro">Back</button>
+</section>
 
-  <!-- TOPICS -->
-  <section id="topic1" class="hidden">
-    <div class="bg"></div>
-    <h2>Opportunities, Challenges, and Threats</h2>
-    <p>Media gives opportunities for education and communication but also brings challenges like misinformation and privacy risks.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<!-- Topics -->
+<section id="opportunities" class="topic">
+  <h2>Opportunities, Challenges, and Threats in Media and Information</h2>
+  <p>Media offers great opportunities for communication, but also poses risks such as misinformation and privacy threats.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <section id="topic2" class="hidden">
-    <div class="bg"></div>
-    <h2>Media and Information Literate Individual</h2>
-    <p>A person who knows how to access, analyze, evaluate, and create media content responsibly and critically.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<section id="literate" class="topic">
+  <h2>Media and Information Literate Individual</h2>
+  <p>A media-literate person can access, analyze, evaluate, and create media responsibly.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <section id="topic3" class="hidden">
-    <div class="bg"></div>
-    <h2>Text and Information Media</h2>
-    <p>Text media includes newspapers, books, and articles that share information through written words.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<section id="text" class="topic">
+  <h2>Text and Information Media</h2>
+  <p>Text media includes written, printed, or digital words that deliver information.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <section id="topic4" class="hidden">
-    <div class="bg"></div>
-    <h2>Design Principles and Elements</h2>
-    <p>Design uses balance, contrast, and emphasis to make information visually clear and engaging.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<section id="design" class="topic">
+  <h2>Design Principles and Elements</h2>
+  <p>Good media design balances color, contrast, alignment, and space to attract attention.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <section id="topic5" class="hidden">
-    <div class="bg"></div>
-    <h2>Visual Information and Media</h2>
-    <p>Images and graphics communicate messages faster and more effectively than plain text.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<section id="visual" class="topic">
+  <h2>Visual Information and Media</h2>
+  <p>Visual media like images, infographics, and videos communicate ideas through sight.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <section id="topic6" class="hidden">
-    <div class="bg"></div>
-    <h2>Audio Information and Media</h2>
-    <p>Audio communicates through sound — radio, podcasts, or music — adding emotion and imagination to messages.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<section id="audio" class="topic">
+  <h2>Audio Information and Media</h2>
+  <p>Audio media such as podcasts and radio convey information through sound and tone.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <section id="topic7" class="hidden">
-    <div class="bg"></div>
-    <h2>Manipulative Information and Media</h2>
-    <p>Manipulative media alters perception through editing or biased presentation, often used in ads or propaganda.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<section id="manipulative" class="topic">
+  <h2>Manipulative Information and Media</h2>
+  <p>Manipulative media use physical materials like charts or models to aid understanding.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <section id="topic8" class="hidden">
-    <div class="bg"></div>
-    <h2>Multimedia Information and Media</h2>
-    <p>Combines text, sound, images, and animation to deliver interactive and engaging information.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<section id="multimedia" class="topic">
+  <h2>Multimedia Information and Media</h2>
+  <p>Multimedia combines text, visuals, audio, and interactivity for better engagement.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <section id="topic9" class="hidden">
-    <div class="bg"></div>
-    <h2>Media and Information Literacy</h2>
-    <p>MIL empowers individuals to think critically, verify facts, and communicate ethically in a digital world.</p>
-    <button class="btn back-btn">Back to Menu</button>
-  </section>
+<section id="literacy" class="topic">
+  <h2>Media and Information Literacy</h2>
+  <p>MIL is the ability to use media and information effectively, responsibly, and ethically.</p>
+  <button class="back backToMenu">Back to Menu</button>
+</section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section');
+<script>
+  // All sections
+  const sections = document.querySelectorAll('section');
+  const getStarted = document.getElementById('getStarted');
+  const topicButtons = document.querySelectorAll('.topic-btn');
+  const backToIntro = document.getElementById('backToIntro');
+  const backToMenuButtons = document.querySelectorAll('.backToMenu');
 
-      function showSection(id) {
-        sections.forEach(sec => {
-          sec.classList.remove('visible');
-          sec.classList.add('hidden');
-        });
-        const target = document.getElementById(id);
-        if (target) {
-          target.classList.remove('hidden');
-          target.classList.add('visible');
-        }
-      }
+  function showSection(id) {
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
 
-      document.querySelectorAll('[data-target]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const target = btn.getAttribute('data-target');
-          showSection(target);
-        });
-      });
+  // Get Started
+  getStarted.addEventListener('click', () => {
+    showSection('menu');
+  });
 
-      document.querySelectorAll('.back-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          showSection('menu');
-        });
-      });
+  // Topic Buttons
+  topicButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      showSection(btn.dataset.topic);
     });
-  </script>
+  });
+
+  // Back Buttons
+  backToIntro.addEventListener('click', () => {
+    showSection('intro');
+  });
+
+  backToMenuButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      showSection('menu');
+    });
+  });
+</script>
+
 </body>
 </html>
