@@ -94,6 +94,82 @@
       color: #aaa;
       font-size: 0.9em;
     }
+
+    /* MIL Parallax */
+#mil-parallax {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  perspective: 1000px;
+  overflow: hidden;
+  flex-direction: column;
+  text-align: center;
+}
+
+#mil-parallax.active {
+  display: flex;
+}
+
+#mil-parallax .layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+}
+
+#mil-parallax .background {
+  background: radial-gradient(circle at center, #3b1f7b, #1a0033);
+  z-index: 1;
+}
+
+#mil-parallax .middle {
+  z-index: 2;
+}
+
+#mil-parallax .line {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: rgba(200, 200, 255, 0.3);
+  animation: float 5s infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-30px); }
+}
+
+#mil-parallax .person {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+#mil-parallax .phone-screen {
+  position: absolute;
+  width: 40px;
+  height: 70px;
+  top: 60px;
+  left: 80px;
+  background: #7a4ee5;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(122,78,229,0.7);
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px rgba(122,78,229,0.5); }
+  100% { box-shadow: 0 0 25px rgba(122,78,229,1); }
+}
   </style>
 </head>
 <body>
@@ -121,6 +197,8 @@
       <button class="topic-btn" onclick="showSection('topic7')">Manipulative Information and Media</button>
       <button class="topic-btn" onclick="showSection('topic8')">Multimedia Information and Media</button>
       <button class="topic-btn" onclick="showSection('topic9')">Media and Information Literacy</button>
+      <!-- ...other topic... -->
+      <button class="topic-btn" onclick="showSection('mil-parallax')">MIL Parallax Demo</button>
     </div>
     <button class="btn" onclick="showSection('intro')">Back</button>
   </section>
@@ -189,12 +267,49 @@
     <button class="btn" onclick="showSection('menu')">Back to Menu</button>
   </section>
 
+  <!-- MIL PARALLAX SECTION -->
+<section id="mil-parallax">
+  <div class="layer background"></div>
+
+  <div class="layer middle">
+    <div class="line" style="left:10%; top:20%; animation-delay:0s;"></div>
+    <div class="line" style="left:30%; top:50%; animation-delay:1s;"></div>
+    <div class="line" style="left:70%; top:30%; animation-delay:2s;"></div>
+  </div>
+
+  <div class="layer person">
+    <img src="https://i.imgur.com/4AiXzf8.png" alt="Person with phone" width="200">
+    <div class="phone-screen"></div>
+  </div>
+  
+  <button class="btn" onclick="showSection('menu')">Back to Menu</button>
+</section>
+
   <!-- SCRIPT -->
-  <script>
-    function showSection(id) {
-      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-    }
-  </script>
+      <script>
+  // Show/hide sections
+  function showSection(id) {
+    document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  }
+
+  // Optional: Mouse-based parallax for MIL section
+  const milSection = document.getElementById('mil-parallax');
+  document.addEventListener('mousemove', (e) => {
+    if (!milSection.classList.contains('active')) return; // Only move when MIL section is active
+
+    const layers = milSection.querySelectorAll('.layer');
+    layers.forEach(layer => {
+      let speed = 0;
+      if (layer.classList.contains('background')) speed = 5;
+      else if (layer.classList.contains('middle')) speed = 15;
+      else if (layer.classList.contains('person')) speed = 25;
+
+      const x = (window.innerWidth/2 - e.clientX) * speed / 1000;
+      const y = (window.innerHeight/2 - e.clientY) * speed / 1000;
+      layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
+    });
+  });
+      </script>
 </body>
 </html>
