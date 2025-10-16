@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MIL 2nd Quarter - Joe's Project</title>
+  <title>MIL 2nd Quarter - Joe's Parallax Web</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
       height: 100%;
+      font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
-      font-family: Arial, sans-serif;
+      background-color: #22123C;
       color: #fff;
     }
 
+    /* Base parallax style */
     .parallax {
       background-attachment: fixed;
       background-position: center;
@@ -27,84 +24,190 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       text-align: center;
-      font-size: 2em;
-      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(34, 18, 60, 0.6);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    /* Intro section */
+    #intro {
+      background: linear-gradient(135deg, #22123C, #472782, #5C34B0);
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #ddd;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn {
+      background: #5C34B0;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #472782;
+      transform: scale(1.05);
     }
 
     .section {
-      padding: 60px 20px;
-      background-color: #111;
+      background-color: #1b1130;
+      padding: 80px 20px;
       text-align: center;
-      color: #eee;
     }
 
-    h2 {
-      color: #00bfff;
+    .section h2 {
+      color: #B89BFF;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    .section p {
+      color: #ddd;
+      max-width: 750px;
+      margin: auto;
+      font-size: 1.1em;
+      line-height: 1.6em;
+    }
+
+    footer {
+      background: #22123C;
+      padding: 25px;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
 
-  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
-    <div>📚 Media and Information Literacy</div>
+  <!-- INTRO SECTION -->
+  <div id="intro" class="parallax">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Media and Information Literacy</h1>
+      <p>Explore the essential lessons and concepts of the 2nd Quarter MIL topics through a violet-themed parallax web experience.</p>
+      <div class="buttons">
+        <a href="#topic1"><button class="btn">Opportunities</button></a>
+        <a href="#topic2"><button class="btn">Media Literate</button></a>
+        <a href="#topic3"><button class="btn">Text Media</button></a>
+        <a href="#topic4"><button class="btn">Design</button></a>
+        <a href="#topic5"><button class="btn">Visual Media</button></a>
+        <a href="#topic6"><button class="btn">Audio Media</button></a>
+        <a href="#topic7"><button class="btn">Manipulative</button></a>
+        <a href="#topic8"><button class="btn">Multimedia</button></a>
+        <a href="#topic9"><button class="btn">MIL Overview</button></a>
+      </div>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>Opportunities, Challenges, and Threats in Media and Information</h2>
-    <p>
-      Media provides opportunities for connection, education, and awareness, 
-      but also presents challenges like misinformation and online privacy risks.
-    </p>
+  <!-- TOPIC 1 -->
+  <div id="topic1" class="parallax" style="background-image: url('https://images.unsplash.com/photo-1556761175-4b46a572b786');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Opportunities, Challenges, and Threats in Media and Information</h2>
+      <p>Media creates opportunities for learning and connection but also poses challenges like misinformation and online risks. Responsible use ensures safety and credibility.</p>
+    </div>
   </div>
 
-  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1522199710521-72d69614c702');">
-    <div>💡 Media and Information Literate Individual</div>
-  </div>
-
-  <div class="section">
+  <!-- TOPIC 2 -->
+  <div id="topic2" class="section">
     <h2>Media and Information Literate Individual</h2>
-    <p>
-      A person who critically understands how media works, verifies information,
-      and uses technology responsibly and ethically.
-    </p>
+    <p>Someone who can access, analyze, evaluate, and create media responsibly. This person uses media with understanding, ethics, and awareness of its effects on society.</p>
   </div>
 
-  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1522204504494-8185f4a36936');">
-    <div>🎨 Design Principles and Elements</div>
+  <!-- TOPIC 3 -->
+  <div id="topic3" class="parallax" style="background-image: url('https://images.unsplash.com/photo-1494172961521-33799ddd43a5');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Text and Information Media</h2>
+      <p>Text media includes newspapers, books, and online articles that inform, educate, and persuade through written words.</p>
+    </div>
   </div>
 
-  <div class="section">
+  <!-- TOPIC 4 -->
+  <div id="topic4" class="section">
     <h2>Design Principles and Elements</h2>
-    <p>
-      Good design uses balance, contrast, emphasis, and harmony to make media
-      more effective and appealing.
-    </p>
+    <p>Design uses principles such as balance, contrast, alignment, and emphasis, along with elements like color and shape, to create effective visual messages.</p>
   </div>
 
-  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475');">
-    <div>🎧 Audio & Visual Media</div>
+  <!-- TOPIC 5 -->
+  <div id="topic5" class="parallax" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Visual Information and Media</h2>
+      <p>Visual media uses images, videos, and graphics to express messages faster and more memorably than text alone.</p>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>Audio and Visual Information and Media</h2>
-    <p>
-      Audio and visual media use sound and imagery to convey messages powerfully,
-      like in videos, ads, and news broadcasts.
-    </p>
+  <!-- TOPIC 6 -->
+  <div id="topic6" class="section">
+    <h2>Audio Information and Media</h2>
+    <p>Audio media communicates using sound—like radio, podcasts, and sound effects—which influence emotion and imagination.</p>
   </div>
 
-  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f');">
-    <div>🖥️ Multimedia Information and Media</div>
+  <!-- TOPIC 7 -->
+  <div id="topic7" class="parallax" style="background-image: url('https://images.unsplash.com/photo-1485217988980-11786ced9454');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Manipulative Information and Media</h2>
+      <p>Manipulative media changes or shapes perception through editing or selective presentation, often used in advertising or propaganda. Critical thinking is key to spotting it.</p>
+    </div>
   </div>
 
-  <div class="section">
+  <!-- TOPIC 8 -->
+  <div id="topic8" class="section">
     <h2>Multimedia Information and Media</h2>
-    <p>
-      Combines text, images, sound, and animation to create interactive experiences,
-      improving communication and understanding.
-    </p>
+    <p>Multimedia combines text, visuals, audio, and animation to present information interactively. It enhances communication and engagement in digital environments.</p>
   </div>
+
+  <!-- TOPIC 9 -->
+  <div id="topic9" class="parallax" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Media and Information Literacy Overview</h2>
+      <p>MIL empowers individuals to think critically, verify facts, and use media ethically. It is essential for informed participation in today’s digital world.</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Joe | MIL 2nd Quarter Parallax Project | Cosmic Violet Theme
+  </footer>
 
 </body>
 </html>
